@@ -99,8 +99,29 @@ H=max(S_T - m_{T_0}^T, 0)
 H=max(M_{T_0}^T - S_T, 0)
 \]
 
-Given the payoff functions as above, next we are going to solve their PDE to derive the price for each of these options in the same manner as pricing Vanilla European options with Black-Scholes PDE.
+Given the payoff functions as above, in 2.3 we are going to solve their PDE to derive the price for each of these options in the same manner as pricing Vanilla European options with Black-Scholes PDE.
+But first, let us look at some examples of lookback options in real life.
+\subsection{Examples of Lookback options
+}
 
+In reality, lookback options, as well as other exotic options, are commonly not traded publicly on exchanges but over-the-counter (OTC).
+Suppose we bought 2 lookback call options, one with fixed strike \$100 and one with floating strike
+on an underlying stock when it was also trading at \$100 with 1 year maturity.
+During that one year, the price of the stock goes up to \$150 at ceiling, hits bottom at \$80, and goes back to \$100 at maturity.
+When we exercise the contract, for the fixed strike option we gain a profit of \$150 - \$100 = \$50,
+since the payoff depends on the most favorable price of the underlying stock.
+For floating strike option, since the lowest price of the stock is \$80 and current price of the stock is \$100,
+the profit is \$100 - \$80 - \$20.
+Lookback options are said to have anti-regret properties, in ways that investors do not have to regret
+selling too early or holding on too long to be suddenly swept by a correction. \\
+
+Let's take another example. Consider two same options, with the underlying stock still having \$150 at high
+and \$80 at low, but now the stock price at maturity is \$130. The profit for fixed strike option remains the
+same in this case at \$50, but the floating strike option makes profit of \$130 - \$80 = \$50. \\
+
+In the third scenario, consider the stock price closes off at its bottom \$80. That sets the strike price at \$80 too,
+and yields zero profit for the floating strike option. The profit for fixed strike option does not depend on
+the stock price at maturity in case it is still higher than its lowest point during the lookback period.
 \subsection{Analytical solution for Lookback options
 }
 \subsubsection{Fixed strike lookback call option
@@ -180,8 +201,10 @@ Let $y=ln\frac{z}{S_0}$, from (2) we have
 
 \subsubsection{Floating strike lookback call option
 }
+hello test
 \subsubsection{Floating strike lookback put option
 }
+
 \section{Barrier options
 }
 
