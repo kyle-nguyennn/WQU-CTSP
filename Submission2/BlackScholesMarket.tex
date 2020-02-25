@@ -249,6 +249,17 @@ Suppose the barrier is set at $H$, there are four different variations possible,
 \\2. Up-and-in:  $payoff_T = (S_T-K)^{+}\mathbb{I}_{\{M_0^T \geq H\}}$\\
 \\3. Down-and-out: $payoff_T = (S_T-K)^{+}\mathbb{I}_{\{m_0^T>H\}}$ \\
 \\4. Down-and-in:  $payoff_T = (S_T-K)^{+}\mathbb{I}_{\{m_0^T \leq H\}}$\\
+\\A knock-out option cancels immediately when the underlying price hits or crosses the predetermined barrier level $H$, A knock-in option does not come into existence  unless the underlying asset hits or crosses the barrier $H$.\\
+
+For Valuation, \\
+
+\[
+C_{Down-and-Out} = e^{-rT} E[(S_T-K)^{+}\mathbb{I}_{\{m_0^T>H\}}]
+\]
+
+\[
+C_{Up-and-Out} = e^{-rT} E[(S_T-K)^{+}\mathbb{I}_{\{M_0^T<H\}}]
+\]
 
 \section{Compound options
 }
