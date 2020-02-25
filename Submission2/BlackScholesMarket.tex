@@ -38,7 +38,7 @@
 % the following creates an abstract -- it can be omitted
 % an example of an environment: these have the form \begin{name} ... \end{name}
 \begin{abstract}
-In this paper we discuss the pricing of exotic options in a Black-Scholes market.  In the first section we introduce the Black-Scholes model in a financial market, in the second section we derive the price of loopback options, in the third section we find the price of barrier options,  in the fourth section we analyse work of Strasbourg school of probability and we conclude by discussing the .  
+In this paper we discuss the pricing of exotic options in a Black-Scholes market.  In the first section we introduce the Black-Scholes model in a financial market, in the second section we derive the price of loopback options, in the third section we find the price of barrier options,  in the fourth section we analyse work of Strasbourg school of probability and we conclude by discussing the purpose of this paper.  
 \end{abstract}
 
 \section{Introduction
@@ -69,7 +69,7 @@ S_t= S_0 e^{(\mu- \frac{\sigma^2}{2})t  + \sigma W_t}
 B_t= B_0  e^{rt}
 \]
 
-Therefore, $S_t$ is a geometric Brownian motion with drift $(\mu- \frac{\sigma^2}{2})$ and volatility $\sigma$.\\
+Therefore, $S_t$ is a geometric Brownian motion with drift $(\mu- \frac{\sigma^2}{2})$ and volatility $\sigma$.  Additional assumptions include costless trading, constant divided on the risky asset and restrictions on the riskless asset. \\
 
 
 
@@ -242,10 +242,13 @@ dX_t=\sigma(X_t)dW_t + \mu(X_t) dt
 
 \section{Compound options
 }
+A compound option is a standard option for which the underlying asset is another standard option. Geske \cite{Geske1} suggests this option can be generalized to value many corporate liabilities.  Since the overlying and underlying are both options there are two strike prices and two exercise dates. 
 
+\subsection{Examples of Lookback options
+}
 
 \section{Conclusion}
-
+In this paper we went through derivations of pricing formulas for Lookback Options, Barrier Options and Compound Options using Black Scholes model.  We also presented brief examples of real world use cases of each of the options discussed.  The purpose of this paper was to discuss the set of tools to value exotic options.
 
 \newpage
 \section*{} \label{bibsection}
@@ -260,6 +263,8 @@ dX_t=\sigma(X_t)dW_t + \mu(X_t) dt
 \bibitem{BS2} Merton, Robert C. (1973). "Theory of Rational Option Pricing". Bell Journal of Economics and Management Science.
 \bibitem{HJ1} Hull, John C. (1997). Options, Futures, and Other Derivatives. Prentice Hall.
 \bibitem{Peter1} Zhang, Peter G. (1998). Exotic Options: A Guide to Second Generation Options. World Scientific Publishing.
+\bibitem{Geske1} Geske, R (1979). The Valuation of Compound Options, Journal of Financial Mathematics.
+\bibitem{Rub1} Rubinstein, M (1991). Double Trouble.
 
 \end{thebibliography}
 \bibliographystyle{plain}
