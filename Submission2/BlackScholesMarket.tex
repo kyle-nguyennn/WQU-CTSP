@@ -233,12 +233,16 @@ We have
 \end{align*}
 \section{Barrier options
 }
+Barrier options is another exotic option, they are consider path-dependant because barrier option's payoff is based on the underlying asset's price path.  These options are also called knock-in or knock-out or also reffered to as drop-in and drop-out by \cite{Rub2} and \cite{Rub4}. These options appear  (knock-in) if the underlying asset hits a barrier level from above or below also they disappear (knock-out) if the underlying asset hits a barrier level from above or below.\\
+\subsection{Examples of Barrier options
+}
 
+For example, a sugar-cane producer wishes to secure today’s higher prices caused by the shortage. He could sell his inventory forward or purchase a European put option on the crop. Both will protect against a downward move in the price but only the European option will allow him to benefit from higher prices. Since he would like some flexibility with future higher prices, he could purchase a three month at the money European put option (with sugar-cane trading at \$6.00 a quintal), but is discouraged by the high premiums. Instead he could purchase an up and in put with a barrier at \$6.25 for 35\% less premium. The producer now owns a European put struck at \$6.00 that does not exist until \$6.25 is reached. Once reached, the producer is able to lock in the prices at more favourable levels.\\
 
-\[
-dX_t=\sigma(X_t)dW_t + \mu(X_t) dt
-\]
+In another scenario, an investor is interested in newly listed electric car maker, which went public Jan 2, 2020, at \$10 a share. By Feb 15, it is trading at \$17.11 per share. Say our investor is bullish on the historic jeans maker, but still cautious.  So they may write a call option on it at \$18 per share, with a strike price of \$23 and a knock-out level of \$30. This option only allows the option holder to profit up to \$30, at which point the option becomes worthless, limiting the loss potential for the option writer.\\
 
+\subsection{Analytical solution for Barrier options
+}
 
 \section{Compound options
 }
@@ -252,6 +256,34 @@ In the first scenario, compound options as a mean for contingency hedging. A Sin
 
 In the second scenario, a large telecommunication service provider is bidding for a spectrum license.  If they win the bid they will need to borrow 100 million dollars for two years for equipment upgrade and if they do not win they will be left 100 million dollars of financing they do not need.  In this case, the best option is to buy a compound option.  Since all the calculations the company did is on current interest rate they need to buy an interest rate cap, the service provider can buy a call option on a two year interest rate cap.  So now, if they win the bid they can exercise option for a two year cap and in the scenario they do not win the bid they let the option expire because underlying financing is not needed any more. \\
 
+\subsection{Analytical solution for Compound options
+}
+
+We have the overlying option with strike price $K$ and maturity date $T$ whereas the underlying option has a strike price $K^*$ and maturity date $T^*$ where $T^* > T$.\\
+
+There are four different variations possible, \\
+\\1. Call on Call: $payoff_T = max\{0,C_{std}(S_t,K^*,T^*-T)-K\}$  \\
+\\2. Put on Call:  $payoff_T = max\{0,K-C_{std}(S_t,K^*,T^*-T)\}$\\
+\\3. Call on Put: $payoff_T = max\{0,P_{std}(S_t,K^*,T^*-T)-K\}$ \\
+\\4. Put on Put:  $payoff_T = max\{0,K-P_{std}(S_t,K^*,T^*-T)\}$\\
+
+$C_{std}$ and $P_{std}$ are given by Black Scholes model for spot $S$, strike $K$ and time to expiration $\tau$.
+
+\[
+C_{std}(S,K,\tau) = Se^{-q\tau}N(d_1) - Ke^{-r\tau}N(d_2)
+\]
+
+\[
+P_{std}(S,K,\tau) = Ke^{-r\tau}N(-d_2) - Se^{-q\tau}N(-d_1)  
+\]
+
+\[
+d_1 = d_2 + \sigma \sqrt{\tau}
+\]
+
+\[
+d_2 = \frac{ln(S/K) + (r-q-\sigma^2)\tau}{\sigma \sqrt{\tau}}
+\]
 \section{Conclusion}
 In this paper we went through derivations of pricing formulas for Lookback Options, Barrier Options and Compound Options using Black Scholes model.  We also presented brief examples of real world use cases of each of the options discussed.  The purpose of this paper was to discuss the set of tools to value exotic options.
 
