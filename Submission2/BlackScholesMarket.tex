@@ -1,0 +1,219 @@
+\documentclass{article}
+\usepackage{graphicx}
+% stuff from the percent sign to end of line is a comment, ignored by LaTeX
+
+\usepackage{amsmath,amssymb,graphicx} %load extra symbols and environments
+\usepackage[margin=1in]{geometry} %set margins
+\usepackage{enumerate}
+\begin{document}
+
+\nocite{*} % this command forces all references in template.bib to be printed in the bibliography
+
+\title{Pricing Exotic Options}
+
+\author{
+  Ansari, Zain Us Sami Ahmed\\
+  \texttt{zainussami@gmail.com}
+  \and
+  Nguyen, Dang Duy Nghia \\
+  \texttt{nghia002@e.ntu.edu.sg}  
+    \and
+  Srivastava, Anchal \\
+  \texttt{anchal.sri82@gmail.com}  
+        \and
+  Gunawan, Handy \\
+  \texttt{handygunawan17@gmail.com}  
+}
+
+\date{Feb. 20, 2020} % if this is omitted, the current date is used for the title page
+
+\maketitle
+
+\noindent
+\textbf{Keywords:} Black-Scholes model, Exotic options,  Lookback options, Barrier options, Compound options
+ and Asset Pricing.
+
+
+
+% the following creates an abstract -- it can be omitted
+% an example of an environment: these have the form \begin{name} ... \end{name}
+\begin{abstract}
+In this paper we discuss the pricing of exotic options in a Black-Scholes market.  In the first section we introduce the Black-Scholes model in a financial market, in the second section we derive the price of loopback options, in the third section we find the price of barrier options,  in the fourth section we analyse work of Strasbourg school of probability and we conclude by discussing the .  
+\end{abstract}
+
+\section{Introduction
+}
+
+Black-Scholes model is a commonly used option pricing model. This model was discovered by the economists Black and Scholes \cite{BS1} in 1973.  The modelling assumptions for this paper are as follows.  The market consists of two assets, the first one is risky asset which is the stock $S$ and the second one is riskless asset the bank account $B$. \\
+
+The riskless asset denoted by $B$ and is modelled by a differential equation 
+
+\[
+dB_t=r B_t dt
+\]
+
+The risk-free interest rate $r$ is constant.\\
+
+The risky asset denoted by $S$ and is modelled by the following SDE
+\[
+dS_t= S_t(\mu dt + \sigma dW_t) 
+\]
+
+If we apply It\={o}'s lemma, we get.
+
+\[
+S_t= S_0 e^{(\mu- \frac{\sigma^2}{2})t  + \sigma W_t} 
+\]
+
+\[
+B_t= B_0  e^{rt}
+\]
+
+Therefore, $S_t$ is a geometric Brownian motion with drift $(\mu- \frac{\sigma^2}{2})$ and volatility $\sigma$.\\
+
+
+
+\section{Lookback options 
+}
+\subsection{Nature of Lookback options
+}
+
+Lookback options are financial derivatives whose payoff depends on the maximum or the minimum price of the underlying assets during a certain period of the life of the option contract. Different schemes of choosing the strike price give different types of lookback options. In this section, we discuss four most common types of lookback options, namely fixed strike call/put options and floating strike call/put options.
+
+For fixed strike options, the strike price is determined at purchase. The payoff for call option is the difference between the maximum asset price during the option life and the predetermined strike price, written in full:
+\[
+H=max(M_{T_0}^T - K, 0)
+\]
+where $K$ is the predetermined strike price and $M_{T_0}^T=\max_{T_0 \leq t \leq T}(S_t)$ is the maximum price of the underlying asset during the lookback period. Similarly the payoff of fixed strike put option is written as:
+\[
+H=max(K - m_{T_0}^T, 0)
+\]
+with $m_{T_0}^T=\min_{T_0 \leq t \leq T}(S_t)$ being the minimum price of the underlying asset during its lookback period.
+
+For the floating stike counterparts, the strike price is determined automatically at maturity such that it is beneficial for the holder. The payoff for call option is the difference between the asset price at maturity and the minimum asset price during its lookback period. Payoff function for call and put function is given respectively:
+\[
+H=max(S_T - m_{T_0}^T, 0)
+\]
+
+\[
+H=max(M_{T_0}^T - S_T, 0)
+\]
+
+Given the payoff functions as above, next we are going to solve their PDE to derive the price for each of these options in the same manner as pricing Vanilla European options with Black-Scholes PDE.
+
+\subsection{Analytical solution for Lookback options
+}
+\subsubsection{Fixed strike lookback call option
+}
+Let $\widetilde{W}$ be a $\mathbb{P}^{\star}$-Brownian motion. As we know, the asset price $S_t$ follows the dynamics:
+\[
+dS_t=S_t(rdt + \sigma d \widetilde{W_t})
+\]
+which yields
+\[
+S_t=S_0 e^{(r - \frac{\sigma^2}{2})t + \sigma \widetilde{W_t}}
+\]
+Now we calculate the price of the fixed strike call option that we define above at time of purchase $T_0=0$
+\begin{align*}
+\pi(H) 	&= \mathbb{E^{\star}}[e^{-rT} max(M_{T_0}^T - K, 0)] \\
+			&= e^{-rT} \mathbb{E^{\star}}[max(M_{0}^T - K, 0)] \\
+			&= e^{-rT} \int_{0}^{\infty} \mathbb{P}^{\star}[M_{0}^T - K \geq x]dx \\
+			&= e^{-rT} \int_{0}^{\infty} \mathbb{P}^{\star}[M_{0}^T \geq x+K]dx \\
+			&= e^{-rT} \int_{0}^{\infty} \mathbb{P}^{\star}[ln \frac{M_{0}^T}{S_0} \geq ln \frac{x+K}{S_0}]dx \\
+			&= e^{-rT} \int_{K}^{\infty} \mathbb{P}^{\star}[ln \frac{M_{0}^T}{S_0} \geq ln \frac{z}{S_0}]dz &(\text{change of variable } z=x+K) \\
+			&= e^{-rT} \int_{K}^{\infty} ( 1 - \mathbb{P}^{\star}[ln \frac{M_{0}^T}{S_0} \leq ln \frac{z}{S_0}])dz &(1)
+\end{align*}
+Now we define a stochastic variable $Y_T= ln \frac{M_{0}^{T}}{S_0}$. By \cite{Peter1},
+\begin{align*}
+\mathbb{P}^{\star}[Y_T \leq y]= \Phi \left(\frac{y-(r-\frac{\sigma^2}{2})T}{\sigma\sqrt{T}} \right) - e^{\frac{2r}{\sigma^2} - 1} \Phi \left(\frac{-y-(r-\frac{\sigma^2}{2})T}{\sigma\sqrt{T}} \right)
+&, y \geq 0
+\end{align*}
+Let $y=ln\frac{z}{S_0}$, from (1) we have
+\begin{align*}
+\pi(H) 	&= e^{-rT} \int_{ln\frac{K}{S_0}}^{\infty} S_0e^y( 1 - \mathbb{P}^{\star}[Y_T \leq y])dy \\
+			&= e^{-rT}S_0 \int_{ln\frac{K}{S_0}}^{\infty} e^y \left( 1 -  
+			\Phi \left(\frac{y-(r-\frac{\sigma^2}{2})T}{\sigma\sqrt{T}} \right) + e^{\frac{2r}{\sigma^2} - 1} \Phi \left(\frac{-y-(r-\frac{\sigma^2}{2})T}{\sigma\sqrt{T}} \right)
+			\right) dy \\
+			&= e^{-rT}S_0 \int_{ln\frac{K}{S_0}}^{\infty} e^y \left( 
+			e^{\frac{2r}{\sigma^2} - 1} \Phi \left(\frac{-y-(r-\frac{\sigma^2}{2})T}{\sigma\sqrt{T}} \right)
+			+ \Phi \left(\frac{(r-\frac{\sigma^2}{2})T - y}{\sigma\sqrt{T}} \right)
+			\right) dy \\
+			&= S_0 \Phi(d) - e^{-rT}K \Phi(d - \sigma \sqrt{T} ) \\
+			&\hspace{1cm} + e^{-rT}\frac{\sigma^2}{2r}S_0 \left[
+			e^{rT}\Phi(d) - \left(\frac{S_0}{K}\right)^{\frac{-2r}{\sigma^2}} \Phi\left(d- \frac{2r}{\sigma}\sqrt{T}\right)
+			\right]
+\end{align*}
+where $d = \frac{ln\frac{S_0}{K} + (r+\frac{\sigma^2}{2})T}{\sigma\sqrt{T}}$
+
+\subsubsection{Fixed strike lookback put option
+}
+The fixed strike lookback put option can be priced in similar way.
+\begin{align*}
+\pi(H) 	&= \mathbb{E^{\star}}[e^{-rT} max(K - m_{0}^T, 0)] \\
+			&= e^{-rT} \mathbb{E^{\star}}[max(K - m_{0}^T, 0)] \\
+			&= e^{-rT} \int_{0}^{K} \mathbb{P}^{\star}[max(K - m_{0}^T, 0) \geq x]dx  &(0 \leq max(K - m_{t}^{T}, 0) \leq K)\\
+			&= e^{-rT} \int_{0}^{K} \mathbb{P}^{\star}[m_{0}^T \leq K-x]dx \\
+			&= e^{-rT} \int_{0}^{K} \mathbb{P}^{\star}[ln \frac{m_{0}^T}{S_0} \leq ln \frac{K-x}{S_0}]dx \\
+			&= -e^{-rT} \int_{0}^{K} \mathbb{P}^{\star}[ln \frac{m_{0}^T}{S_0} \leq ln \frac{z}{S_0}]dz &(\text{change of variable } z=K-x) \\
+			&= -e^{-rT} \int_{0}^{ln\frac{K}{S_0}} S_0e^{y} \mathbb{P}^{\star}[y_T \leq y]dy &(2)
+\end{align*}
+
+Again, we define the stochastic variable $y_T= ln \frac{m_{0}^{T}}{S_0}$. By \cite{Peter1},
+\begin{align*}
+\mathbb{P}^{\star}[y_T \geq y]= \Phi \left(\frac{-y+(r-\frac{\sigma^2}{2})T}{\sigma\sqrt{T}} \right) - e^{\frac{2r}{\sigma^2} - 1} \Phi \left(\frac{y+(r-\frac{\sigma^2}{2})T}{\sigma\sqrt{T}} \right)
+&, y \leq 0
+\end{align*}
+Let $y=ln\frac{z}{S_0}$, from (2) we have
+\begin{align*}
+\pi(H) 	&= e^{-rT} \int_{0}^{ln\frac{K}{S_0}} S_0e^y( 1 - \mathbb{P}^{\star}[y_T \geq y])dy \\
+			&= e^{-rT}S_0 \int_{0}^{ln\frac{K}{S_0}}  e^y \left( 1 -  
+			\Phi \left(\frac{-y+(r-\frac{\sigma^2}{2})T}{\sigma\sqrt{T}} \right) + e^{\frac{2r}{\sigma^2} - 1} \Phi \left(\frac{y+(r-\frac{\sigma^2}{2})T}{\sigma\sqrt{T}} \right)
+			\right) dy \\
+			&= e^{-rT}S_0 \int_{0}^{ln\frac{K}{S_0}} e^y \left( 
+			\Phi \left(\frac{y-(r-\frac{\sigma^2}{2})T}{\sigma\sqrt{T}} \right) + e^{\frac{2r}{\sigma^2} - 1} \Phi \left(\frac{y+(r-\frac{\sigma^2}{2})T}{\sigma\sqrt{T}} \right)
+			\right) dy \\
+			&= -S_0 \Phi(-d) + e^{-rT}K \Phi(-d + \sigma \sqrt{T} ) \\
+			&\hspace{1cm} + e^{-rT}\frac{\sigma^2}{2r}S_0 \left[
+			\left(\frac{S_0}{K}\right)^{\frac{-2r}{\sigma^2}} \Phi\left(-d+ \frac{2r}{\sigma}\sqrt{T} \right) - e^{rT}\Phi(-d)
+			\right]
+\end{align*}
+
+\subsubsection{Floating strike lookback call option
+}
+\subsubsection{Floating strike lookback put option
+}
+\section{Barrier options
+}
+
+
+\[
+dX_t=\sigma(X_t)dW_t + \mu(X_t) dt
+\]
+
+
+\section{Compound options
+}
+
+
+\section{Conclusion}
+
+
+\newpage
+\section*{} \label{bibsection}
+
+
+% the second parameter MMMMM should be as long as the longest label you use, in my case Smoller -- if you use % numbers only, use 99
+% use \cite{refname} to refer to bibliography item \bibitem{refname} 
+% LaTeX assigns a number, unless you use \bibitem[Name]{refname} -- in this case
+% LaTeX prints Name when you use \cite{refname}
+\begin{thebibliography}{MMMMM} 
+\bibitem{BS1} Black, Fischer; Myron Scholes (1973). "The Pricing of Options and Corporate Liabilities". Journal of Political Economy.
+\bibitem{BS2} Merton, Robert C. (1973). "Theory of Rational Option Pricing". Bell Journal of Economics and Management Science.
+\bibitem{HJ1} Hull, John C. (1997). Options, Futures, and Other Derivatives. Prentice Hall.
+\bibitem{Peter1} Zhang, Peter G. (1998). Exotic Options: A Guide to Second Generation Options. World Scientific Publishing.
+
+\end{thebibliography}
+\bibliographystyle{plain}
+\bibliography{template}
+
+\end{document}

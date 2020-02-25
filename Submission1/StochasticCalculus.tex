@@ -1,0 +1,129 @@
+\documentclass{article}
+\usepackage{graphicx}
+% stuff from the percent sign to end of line is a comment, ignored by LaTeX
+
+\usepackage{amsmath,amssymb,graphicx} %load extra symbols and environments
+\usepackage[margin=1in]{geometry} %set margins
+\usepackage{enumerate}
+\begin{document}
+
+\nocite{*} % this command forces all references in template.bib to be printed in the bibliography
+
+\title{Stochastic Calculus in the 20th Century}
+
+\author{
+  Ansari, Zain Us Sami Ahmed\\
+  \texttt{zainussami@gmail.com}
+  \and
+  Nguyen, Dang Duy Nghia \\
+  \texttt{nghia002@e.ntu.edu.sg}  
+    \and
+  Srivastava, Anchal \\
+  \texttt{anchal.sri82@gmail.com}  
+        \and
+  Gunawan, Handy \\
+  \texttt{handygunawan17@gmail.com}  
+}
+
+\date{Feb. 8, 2020} % if this is omitted, the current date is used for the title page
+
+\maketitle
+
+\noindent
+\textbf{Keywords:} Stochastic Integration, Bachelier,  Samuelson, It\={o}, Martingales and Strasbourg School.
+
+
+
+% the following creates an abstract -- it can be omitted
+% an example of an environment: these have the form \begin{name} ... \end{name}
+\begin{abstract}
+In this paper we introduce the early history of stochastic processes and the development of stochastic integration.  In the first section we introduce stochastic integration, in the second section we discuss the role played by Louis Bachelier in mathematical finance and how his ideas were improved upon by Paul Samuelson, in the third section we see the impact of contributions made by Japanese mathematicians,  in the fourth section we analyse work of Strasbourg school of probability and we conclude by discussing the impact of stochastic integration and stochastic calculus.  
+\end{abstract}
+
+\section{Introduction
+}
+Modelling of real-world phenomenon led to the development of ordinary differential equations (ODE) which in turn led to the development of stochastic calculus in order to derive meaning from these ODEs.  The most important of these stochastic processes is Brownian motion, Bachelier\cite{Bach1} initiated quantitative work on Brownian motion who was interested in Paris stock market fluctuations.  Samuelson\cite{Sam1} \cite{Sam2} went on to explain and improve upon the ideas presented by Bachelier.  It\={o} published his  first paper \cite{Ito1} on stochastic integration in 1944, It\={o} was exploring stochastic integration to establish a true stochastic differential to be used in the study of Markov processes .  Inspired by the work of Japanese mathematicians Meyer \cite{Mey1} \cite{Mey2} \cite{Mey3} \cite{Mey4} went on to make great contributions during his time at Strasbourg, most of the important works on on stochastic integration were published in the S\'{e}minaire de Probabilit\'{e}s series.  While we discuss the work of mathematicians mentioned above we have to give credit to other people working on problems not directly related to the development of stochastic processes. Einstein \cite{Ein1} studying the movement of small particles in a liquid to prove the molecular nature of matter is one such example.
+
+\section{Role of Louis Bachelier and Paul Samuelson in mathematical finance 
+}
+
+Louis Jean-Baptiste Alphonse Bachelier (1870-1946) was a French mathematician who introduced the formal mathematical description of a Brownian stochastic process in 1900 and is now regarded as the forefather of mathematical finance. In his doctoral thesis \cite{Bach1}, he applied the mathematics of Brownian stochastic process to describe stocks and options price. He defended his thesis on March 29th 1900 and it was published by
+Gauthier-Villars in a book of the same name. One of the main insight from this thesis is the conjecture: if there are identifiable patterns of asset prices movement in the short term, speculators will discover and exploit it, which would in effect eliminate the pattern. Although regarded today as the breakthrough that opened up the field of mathematical finance, the thesis was under appreciated at the time as the subject of finance was yet unfamiliar to contemporary mathematicians. A few years after the defense of his thesis, Bachelier went on to further develop the theory of diffusion processes and published his discovery in several prestigious journals. In 1909, he became a ‘free professor’ at the University of Paris, also known
+as the Sorbonne. During this time, he published his most popular book titled Le Jeu, la Chance, et le Hasard (Games, Chance, and Randomness) that sold over six thousand copies. His work on stochastic processes, though pre-dated the celebrated study of Brownian motion by Einstein, was only recognized several decades later, which then inspired mathematician Paul Lévy and economist Paul Samuelson to expand the field and apply it to financial markets. \\
+
+
+
+
+Paul Samuelson's first interaction with Bachelier’s idea was when his colleague, an American mathematician, Leonard Jimmie Savage rediscovered Bachelier’s book and brought it to Samuelson’s attention. Samuelson said, "When I opened it up, it was as if a whole new world was laid out before me. In fact, as I was reading it I arranged to get a translation in English because I really wanted every precious pearl to be understood". He further developed Bachelier's idea and published two impactful papers that changed the field of finance then: Proof That Properly Anticipated Prices Fluctuate Randomly\cite{Sam2} and Rational Theory of Warrant Pricing\cite{Sam1}. In these papers, he proposed a model for option pricing that later inspired the Nobel-winning Black-Scholes model that has now become the de-facto standard for estimating the price of European options, but there were much more to these papers. The paper Proof That Properly Anticipated Prices Fluctuate Randomly\cite{Sam2} laid the mathematical foundation for the well-known efficient-market hypothesis \cite{Fama1} which predicts that the assets price incorporates all available information in the market.  The claim was based on the assumption that the price of different financial assets, including common stocks, bonds and futures contracts rely on macroeconomic factors such as GNP, inflation rate, unemployment rate, etc., and these factors are interdependent. Given that all information are accessible by every market participant, everyone would know how a speculation is going to drive the price of a security. As a result, everyone would bid up or down according and negate the possibility for arbitrage. In other words, in a perfectly efficient market, the current price of a security always reflects its forecastable changes in the underlying economic variables, this leaving the unanticipated changes for speculation. Samuelson proved that the change in speculative price behaves like a martingale process, meaning expected value of future price is the price at the time of speculation. \\
+
+
+\section{Contribution of Kiyosi It\={o} and other Japanese mathematicians
+}
+
+Now we will go ahead and discuss the father of stochastic integration, Kiyosi It\={o}.  After the establishment of Markov process, mathematicians needed a true stochastic differential to be used in the study of stochastic integrals. Although Wiener’s integral \cite{Wei1}  was proposed, it did not allow stochastic processes to be integrands. Therefore, it was not possible to represent a diffusion as a solution of a stochastic differential equation. Kiyosi It\={o} then proposed the It\={o} integral, which is more general and makes further development of stochastic integration possible. It\={o} published his paper stochastic integration \cite{Ito1}, his most important contribution was to develop the calculus for stochastic integrals.  The stochastic differential equation he ended up developing,\\
+
+\[
+dX_t=\sigma(X_t)dW_t + \mu(X_t) dt
+\]
+
+This led to the development of what is now well known as It\={o}'s lemma.  It\={o}'s lemma is an extension of the change of variables formula for Riemann-Stieltjes integration. But it is utterly different to the integration of classical path by path calculus. It\={o} knew that it was not possible to integrate all continuous stochastic processes as Brownian motion has paths of unbounded variation almost surely. The essence of his ingenious work is, only integrands that are adapted to the underlying filtration of $\sigma$-algebras generated by the Brownian motion are allowed.  \\
+
+It\={o}’s interpretation of stochastic integration, as well as It\={o}’s lemma, became the cornerstone of stochastic integration. Later developments in stochastic integration including, for example, based upon the interpretation by It\={o}, J. L. Doob extended It\={o}’s integral to martingales \cite{Doob1}. \\
+
+Having discussed the fundamental work provided by It\={o} we must discuss the contributions of other Japanese mathematicians.  Motoo and Watanabe \cite{KW2} went on to develop a martingale representation theorem, in the same paper they also suggested using stochastic integral as an operator on martingales. However, the contribution of Kunita and Watanabe \cite{KW1} they not only went on to extend the work of It\={o} for Brownian martingales.  They were also able to characterize Brownian motion among continuous martingales. Their work was even noticed at the Strasbourg School  where Paul-Andr\'{e} Meyer greatly appreciated their work and started Seminaire de Probabilites which is discussed in detail in the next section. \\
+
+\section{Contribution of Paul-Andr\'{e} Meyer's Strasbourg School of probability
+}
+Paul-Andr\'{e} Meyer was a French mathematician who played a major role in the development of  stochastic process theory during his time at Strasbourg School of probability. While admiring Doob's work\cite{Doob1} for taking a measure theoretic approach towards Stochastic Processes, he questions the theory of continuous time processes.  To address these questions he published two seminal papers, the first one established the existence of  Doob decomposition for continuous time sub-martingales \cite{Mey6}, he goes on to establish the uniqueness of  Doob decompositions \cite{Mey8} which has now been established as Doob-Meyer decomposition theorem. Meyer's work in \cite{Mey8} on the structure of $L^2$ martingales became the basis for the development of stochastic integration. \\
+
+Inspired by the work of Japanese mathematicians, Meyer, now at  Strasbourg School of probability joined hands with Springer to produce the longest running seminars and historically it is the most important work on stochastic integration.  Meyer himself wrote four key papers for this publication, he blended the work of Kunita and Watanabe's with general theory of processes to produce  integration with respect to general semi-martingales.  \\
+
+Dol\'{e}ans-Dade and Meyer \cite{Mey10} wanted to avoid Markov property and they were able to eliminate Markov property completely making the theory completely martingale theory, they also went on to introduce semi-martingale ( a process for which existed a stochastic process). \\
+
+Meyer, must also be appreciated for his book \cite{Mey9}, which has been keeping researchers and students up to date on the theory of the subject.
+
+
+\section{Conclusion}
+
+As Meyer has himself pointed out in \cite{Mey5} "Doing 'history of mathematics' about Probability Theory is an undertaking doomed to failure from the outset, hardly less absurd than doing history of physics from a mathematician's viewpoint, neglecting all of experimental physics." Here we only discuss the contributions of a selected few towards the development of Stochastic Calculus and also the application into finance and economics. We looked at these notable examples to understand the chaotic emergence of different schools of thought around the world in search for the ‘new probability’ during the 90s. Not only do we appreciate the harmonious combination of these ideas into a beautiful theory of Stochastic Processes and Calculus today, but also do we embrace the nature of academic research process, that is stochastic in itself.
+
+\newpage
+\section*{} \label{bibsection}
+
+
+% the second parameter MMMMM should be as long as the longest label you use, in my case Smoller -- if you use % numbers only, use 99
+% use \cite{refname} to refer to bibliography item \bibitem{refname} 
+% LaTeX assigns a number, unless you use \bibitem[Name]{refname} -- in this case
+% LaTeX prints Name when you use \cite{refname}
+\begin{thebibliography}{MMMMM} 
+\bibitem{Bach1} Bachelier, L. , \textit{Theorie de la Speculation, Annales Scientifiques de l'Ecole Normale Superieure, 21-86.}, 1900.
+\bibitem{Sam1} Samuelson, P. , \textit{Rational Theory of Warrant Pricing, Industrial Man- agement Review, 6, 13â€“39.}, 1965.
+\bibitem{Sam2} Samuelson, P. , \textit{Proof That Properly Anticipated Prices Fluctuate Ran- domly, Industrial Management Review, 6, 41â€“49}, 1965.
+\bibitem{Ito1} It\={o}, K  , \textit{Stochastic Integral, Proc. Imp. Acad. Tokyo}, 1944.
+\bibitem{Ito2} It\={o}, K  , \textit{Poisson point processes attached to Markov processes}, 1970.
+\bibitem{Ito3} It\={o}, K  , \textit{Poisson point processes and their application to Markov processes}, 1969.
+\bibitem{Ito4} It\={o}, K,H.P. McKean Jr.  , \textit{Brownian motions on a half line}, 1963.
+\bibitem{Ito5} It\={o}, K, H.P. McKean Jr. , \textit{Diffusion Processes and their Sample Paths}, 1965.
+\bibitem{Mey1} Meyer, P. A.  , \textit{Integrales Stochastiques I}, 1967.
+\bibitem{Mey2} Meyer, P. A.  , \textit{Integrales Stochastiques II}, 1967.
+\bibitem{Mey3} Meyer, P. A.  , \textit{Integrales Stochastiques III}, 1967.
+\bibitem{Mey4} Meyer, P. A.  , \textit{Integrales Stochastiques IV}, 1967.
+\bibitem{Mey5} Meyer, Paul-Andr\'{e}. "Stochastic processes from 1950 to the present." \textit{Electronic Journal for History of Probability and Statistics}, 5.1 (2009): 1-42.
+\bibitem{Mey6} Meyer, P. A.  , \textit{A decomposition theorem for supermartingales}, 1962.
+\bibitem{Mey7} Meyer, P. A.  , \textit{Fonctionnelles multiplicatives et additives de Markov}, 1962.
+\bibitem{Mey8} Meyer, P. A.  , \textit{Decomposition of supermartingales: the uniqueness theorem}, 1963.
+\bibitem{Mey9} Meyer, P. A.  , \textit{Probability and Potentials}, 1966.
+\bibitem{Mey10} Doleans-Dade, C. and Meyer, P. A.  , \textit{Integrales stochastiques par rapport aux martingales locales, Seminaire de Probabilites IV}, 1970.
+\bibitem{Fama1} Malkiel, B. G. \& Fama, E. F.  , \textit{Efficient capital markets: A review of theory and empirical work}, 1970.
+\bibitem{Doob1} Doob, Joseph Leo.  , \textit{Stochastic processes}, Vol. 101. Wiley: New York, 1953.
+\bibitem{Ein1} Einstein, A  , \textit{On the movement of small particles suspended in stationary liquid demanded by the molecular kinetic theory of heat}, 1905.
+\bibitem{Wei1} Wiener’s integral,  \textit{Encyclopedia of Mathematics}.
+\bibitem{KW1} Kunita,H.and Watanabe,S.,  \textit{On Square Integrable Martingales}, 1967.
+\bibitem{KW2} Motoo, M. and Watanabe,S.  \textit{On a class of aditive functionals of Markov process}, 1965.
+
+
+\end{thebibliography}
+\bibliographystyle{plain}
+\bibliography{template}
+
+\end{document}
