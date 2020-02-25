@@ -201,10 +201,36 @@ Let $y=ln\frac{z}{S_0}$, from (2) we have
 
 \subsubsection{Floating strike lookback call option
 }
-hello test
+In the last two sections, we have already done all the heavy lifting of deriving the price equations for fixed strike lookback options.
+In the next two sections, we will show that the price of floating strike lookback options can be easily deduced from their fixed counterparts.
+
+Consider first a floating strike call option's price $\pi(H) = \mathbb{E^{\star}}[e^{-rT} max(S_T - m_{0}^T, 0)]$.
+It is obvious to see that $S_T \geq m_{T_0}^T$, always, by definition. Hence we can rewrite
+\begin{align*}
+\pi(H) 	&= \mathbb{E^{\star}}[e^{-rT} (S_T - m_{0}^T)] \\
+		&= e^{-rT} \mathbb{E^{\star}}[S_T - m_{0}^T] \\
+		&= e^{-rT} \mathbb{E^{\star}}[(S_T - S_0) + max(S_{0} - m_{0}^T, 0)] \\
+		&= e^{-rT} \mathbb{E^{\star}}[S_T - S_0] + e^{-rT} \mathbb{E^{\star}}[max(S_{0} - m_{0}^T, 0)] \\
+\end{align*}
+Now we can see that the second addend is exactly the price of a lookback put option at fixed strike $S_0$.
+Substitute the formular in 2.2.2, we have
+\begin{align*}
+\pi(H)	&= S_0 \Phi(d_0) - e^{-rT}S_0 \Phi(d_0 - \sigma \sqrt{T} ) \\
+		&\hspace{1cm} + e^{-rT}\frac{\sigma^2}{2r}S_0 \left[
+			\Phi\left(-d_0+ \frac{2r}{\sigma}\sqrt{T} \right) - e^{rT}\Phi(-d_0)
+		\right]
+\end{align*}
+where $d_0 = d|_{K = S_0} = \frac{(r+\frac{\sigma^2}{2})T}{\sigma\sqrt{T}} = (\frac{r}{\sigma} + \frac{\sigma}{2})\sqrt{T}$
 \subsubsection{Floating strike lookback put option
 }
-
+Using the same logic to relate the price of a floating strike lookback put option to the price of a fixed strike lookback call option.
+We have
+\begin{align*}
+\pi(H) 	&= -S_0 \Phi(-d_0) + e^{-rT}S_0 \Phi(-d_0 + \sigma \sqrt{T} ) \\
+		&\hspace{1cm} + e^{-rT}\frac{\sigma^2}{2r}S_0 \left[
+			e^{rT}\Phi(d_0) - \Phi\left(d_0 - \frac{2r}{\sigma}\sqrt{T} \right)
+		\right]
+\end{align*}
 \section{Barrier options
 }
 
