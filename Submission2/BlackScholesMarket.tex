@@ -244,6 +244,12 @@ In another scenario, an investor is interested in newly listed electric car make
 \subsection{Analytical solution for Barrier options
 }
 
+Suppose the barrier is set at $H$, there are four different variations possible, \\
+\\1. Up-and-out: $payoff_T = (S_T-K)^{+}\mathbb{I}_{\{M_0^T<H\}}$  \\
+\\2. Up-and-in:  $payoff_T = (S_T-K)^{+}\mathbb{I}_{\{M_0^T \geq H\}}$\\
+\\3. Down-and-out: $payoff_T = (S_T-K)^{+}\mathbb{I}_{\{m_0^T>H\}}$ \\
+\\4. Down-and-in:  $payoff_T = (S_T-K)^{+}\mathbb{I}_{\{m_0^T \leq H\}}$\\
+
 \section{Compound options
 }
 A compound option is a standard option for which the underlying asset is another standard option. Geske \cite{Geske1} suggests this option can be generalized to value many corporate liabilities.  Since the overlying and underlying are both options there are two strike prices and two exercise dates. 
