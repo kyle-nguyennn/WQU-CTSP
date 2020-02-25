@@ -244,8 +244,13 @@ dX_t=\sigma(X_t)dW_t + \mu(X_t) dt
 }
 A compound option is a standard option for which the underlying asset is another standard option. Geske \cite{Geske1} suggests this option can be generalized to value many corporate liabilities.  Since the overlying and underlying are both options there are two strike prices and two exercise dates. 
 
-\subsection{Examples of Lookback options
+\subsection{Examples of Compound options
 }
+Speculation remain the biggest real world use case of compound options but enterprises and businesses can really benefit from compound options.\\
+
+In the first scenario, compound options as a mean for contingency hedging. A Singaporean IT firm is bidding for a project with the United States government to start in 6 months, upon completion of the project the Singaporean IT firm will earn 2 million USD 12 months after the start of the contract.  The IT firm needs to hedge its dollar exposure against a possibility of a lower USD/SGD rate.  If they purchase a call option on USD-put option.  If the bid is successful and USD-put rises in value they exercise the compound option, if they USD-put falls in value they buy the USD-put in the market.  In the case where the company is not successful in the bid and USD-put rises in value they exercise the compound option and if the USD-put falls in value the compound option expires.  In all the cases, the loss to the IT firm is limited to premium paid for the compound option.\\
+
+In the second scenario, a large telecommunication service provider is bidding for a spectrum license.  If they win the bid they will need to borrow 100 million dollars for two years for equipment upgrade and if they do not win they will be left 100 million dollars of financing they do not need.  In this case, the best option is to buy a compound option.  Since all the calculations the company did is on current interest rate they need to buy an interest rate cap, the service provider can buy a call option on a two year interest rate cap.  So now, if they win the bid they can exercise option for a two year cap and in the scenario they do not win the bid they let the option expire because underlying financing is not needed any more. \\
 
 \section{Conclusion}
 In this paper we went through derivations of pricing formulas for Lookback Options, Barrier Options and Compound Options using Black Scholes model.  We also presented brief examples of real world use cases of each of the options discussed.  The purpose of this paper was to discuss the set of tools to value exotic options.
@@ -265,6 +270,11 @@ In this paper we went through derivations of pricing formulas for Lookback Optio
 \bibitem{Peter1} Zhang, Peter G. (1998). Exotic Options: A Guide to Second Generation Options. World Scientific Publishing.
 \bibitem{Geske1} Geske, R (1979). The Valuation of Compound Options, Journal of Financial Mathematics.
 \bibitem{Rub1} Rubinstein, M (1991). Double Trouble.
+\bibitem{Rub2} Cox,J. and M. Rubinstein (1985). Options Markets. Prentice Hall.
+\bibitem{Rub3} Rubinstein, M (1991). Pay now, Choose later.
+\bibitem{Rub4} E.Reiner and M. Rubinstein (1991). Breaking down the Barriers. Prentice Hall.
+\bibitem{Rei1} Reiner, E (1992). Quanto Mechanics.
+
 
 \end{thebibliography}
 \bibliographystyle{plain}
