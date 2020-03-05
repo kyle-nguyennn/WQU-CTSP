@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage{graphicx}
+% stuff from the percent sign to end of line is a comment, ignored by LaTeX
+
+\usepackage{amsmath,amssymb,graphicx} %load extra symbols and environments
+\usepackage[margin=1in]{geometry} %set margins
+\usepackage{enumerate}
+\begin{document}
+
+\nocite{*} % this command forces all references in template.bib to be printed in the bibliography
+
+\title{Short Rate Models}
+
+\author{
+  Ansari, Zain Us Sami Ahmed\\
+  \texttt{zainussami@gmail.com}
+  \and
+  Nguyen, Dang Duy Nghia \\
+  \texttt{nghia002@e.ntu.edu.sg}  
+  }
+
+\date{March. 5, 2020} % if this is omitted, the current date is used for the title page
+
+\maketitle
+
+\noindent
+\textbf{Keywords:} Short rate models, Interest Rates Derivatives,  Ho-Lee Model, Vasicek Model, Cox-Ingersoll-Ross (CIR) model, Single factor and two factor Hull-White model.
+
+
+
+% the following creates an abstract -- it can be omitted
+% an example of an environment: these have the form \begin{name} ... \end{name}
+\begin{abstract}
+In this paper we discuss the interest rate models with a focus on two factor Hull-White model.  In the first section , in the second section we describe the two factor Hull-White model in mathematical terms, in the third section we compare this model to Ho-Lee Model, Vasicek Model, Cox-Ingersoll-Ross (CIR) model, Single factor Hull-White model,  in the fourth section we present a derivative product payoff using the two factor Hull-White model. and we conclude by discussing the purpose of this paper.  
+\end{abstract}
+
+\section{Introduction
+}
+
+
+
+
+\section{Two-Factor Hull-White Model 
+}
+
+
+\section{Comparison with Single Factor Short Rate Models
+}
+
+\section{Derivative product Payoff}
+
+
+\section{Conclusion}
+
+In this paper we went through ....................  The purpose of this paper ..............................
+
+\newpage
+\section*{} \label{bibsection}
+
+
+% the second parameter MMMMM should be as long as the longest label you use, in my case Smoller -- if you use % numbers only, use 99
+% use \cite{refname} to refer to bibliography item \bibitem{refname} 
+% LaTeX assigns a number, unless you use \bibitem[Name]{refname} -- in this case
+% LaTeX prints Name when you use \cite{refname}
+\begin{thebibliography}{MMMMM} 
+\bibitem{BA1} Blanchard, Arnaud. "The two-factor Hull-White model: pricing and calibration of interest rates derivatives." KTH Royal Insitute of Technology (2014).
+
+
+\end{thebibliography}
+\bibliographystyle{plain}
+\bibliography{template}
+
+\end{document}
