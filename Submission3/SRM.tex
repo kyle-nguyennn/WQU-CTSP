@@ -95,12 +95,34 @@ The model exhibits mean reversion, over time interest rate converge to the mean 
 
 \subsection{Comparison with Ho-Lee model
 }
-Ho-Lee model developed in 1986 \cite{HoLee1} by Thomas SY Ho and Sang-Bin Lee, it is a single factor short rate model used in pricing of interest rate derivatives.
+Ho-Lee model developed in 1986 \cite{HoLee1} by Thomas SY Ho and Sang-Bin Lee, it is a single factor short rate model used in pricing of interest rate derivatives.  It was the first model arbitrage free computational lattices for evolution of short interest rates.  Ho-Lee assumed interest rates have a normal distribution.
 
+The Ho-Lee  model describes short interest rates as follows,
+ \[
+dr_t = \theta_t dt + \sigma  dW_t
+\]
+Where,\\
+$\theta_t =$ Drift  \\
+$\sigma$ = Short rate volatility \\
+$W_t$ = Brownian motion process  \\
+
+This model permits both the drift to be function of time and it produces an instantaneous short interest rate that has a normal distribution it exhibits no mean reversion.  In comparison to the two factor Hull-White model it exhibits several short comings such as there is no term structure volatility, there is only one factor which assumes short rates correlated.
 
 \subsection{Comparison with Hull-White model
 }
+Hull-White model developed in 1990 \cite{HW1} by John C. Hull and Alan D. White, it is a single factor short rate model used in pricing of interest rate derivatives.  It is also known as the Extended Vasicek Model.\\
 
+The Hull-White model in essence is the same as the Vasicek model with time dependent parameters and describes short interest rates as follows,
+ \[
+dr_t = (\theta_t - \alpha_t r_t) dt + \sigma_t  dW_t
+\]
+Where,\\
+$\theta_t =$ Drift  \\
+$\alpha_t =$ Time dependent Speed of mean reversion $0 \leq \alpha \leq 1 $ \\
+$\sigma_t$ = Time dependent Short rate volatility \\
+$W_t$ = Brownian motion process  \\
+
+The Hull-White model also assumes that short rates have a normal distribution it exhibits mean reversion.  In comparison to the two factor Hull-White model it exhibits several short comings such as there is no term structure volatility, there is only one factor which assumes short rates correlated.
 \section{Derivative product Payoff}
 
 
