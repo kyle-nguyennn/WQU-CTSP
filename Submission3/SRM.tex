@@ -45,9 +45,9 @@ Short rate models are rooted in the Vasicek model \cite{BN1} which is considered
 
 Short rate models are divided in two categories.  The first one is equilibrium models, Vasicek model and Cox, Ingersoll and Ross (CIR) model are examples of equilibrium short rate models.  The second one is the arbitrage free models, the Ho-Lee model and the Hull-White model are example of arbitrage free models.  We discuss all these models in Section 3. \\ 
 
-The short rate models are either single factor or multi factor, for this paper we will only focus on One-factor short rate models and a two factor short rate model \cite{BA1}.  
+The short rate models are either single factor or multi factor, for this paper we will only focus on One-factor short rate models and a two factor short rate model \cite{BA1}.  One factor  models involve a single stochastic factor which is the short rate to determine the future movements of all interest rates.  \\
 
-
+TODO: Write intro of a two factor model.
 
 
 \section{Two-Factor Hull-White Model 
@@ -59,7 +59,21 @@ The short rate models are either single factor or multi factor, for this paper w
 
 \subsection{Comparison with Vasicek model
 }
-The Vasicek Model \cite{Vas1} model is one of the earliest stochastic models of the term structure of interest rate.
+The Vasicek Model \cite{Vas1} model is one of the earliest stochastic models of the term structure of interest rate.\\
+
+The Vasicek model describes short interest rates as follows,
+ \[
+dr_t = \alpha(\beta - r_t) dt + \sigma dW_t
+\]
+Where,\\
+$\alpha =$ Speed of mean reversion $0 \leq \alpha \leq 1 $ \\
+$\beta =$ Mean reversion level  \\
+$r_t$ = Short rate  \\
+$\sigma$ = Short rate volatility \\
+$W_t$ = Brownian motion process  \\
+
+The model exhibits mean reversion, over time interest rate converge to the mean reversion level $\beta$ at the speed of $\alpha$.  In comparison to the two factor Hull-White model it exhibits several short comings such as there is no term structure volatility, there is only one factor which assumes short rates correlated, it is an endogenous model containing time homogeneous parameters which do not vary over time.
+
 
 \subsection{Comparison with Cox-Ingersoll-Ross (CIR) model
 }
