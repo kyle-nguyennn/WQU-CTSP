@@ -78,6 +78,21 @@ The model exhibits mean reversion, over time interest rate converge to the mean 
 \subsection{Comparison with Cox-Ingersoll-Ross (CIR) model
 }
 
+The Cox-Ingersoll-Ross (CIR) model was developed in 1985 \cite{CIR1} by J. C. Cox, J. E. Ingersoll and S. A. Ross.  This model is considered an improvement to the Vasicek model and the square root element does not allow for negative rates.\\
+
+The Cox-Ingersoll-Ross (CIR) model describes short interest rates as follows,
+ \[
+dr_t = \alpha(\beta - r_t) dt + \sigma \sqrt{r_t} dW_t
+\]
+Where,\\
+$\alpha =$ Speed of mean reversion $0 \leq \alpha \leq 1 $ \\
+$\beta =$ Mean reversion level  \\
+$r_t$ = Short rate  \\
+$\sigma$ = Short rate volatility \\
+$W_t$ = Brownian motion process  \\
+
+The model exhibits mean reversion, over time interest rate converge to the mean reversion level $\beta$ at the speed of $\alpha$.  In comparison to the two factor Hull-White model it exhibits several short comings such as there is no term structure volatility, there is only one factor which assumes short rates correlated, it is an endogenous model containing time homogeneous parameters which do not vary over time.
+
 \subsection{Comparison with Ho-Lee model
 }
 Ho-Lee model developed in 1986 \cite{HoLee1} by Thomas SY Ho and Sang-Bin Lee, it is a single factor short rate model used in pricing of interest rate derivatives.
