@@ -52,8 +52,22 @@ TODO: Write intro of a two factor model.
 
 \section{Two-Factor Hull-White Model 
 }
+\subsection{The motivation for two-factor models
+}
+The short rate $r_t$ with its stochastic behavior characterizes the yield curve, which tells the interest rate of bonds in relation to maturity, written as:
+\[
+P(t,T) = \mathbb{E}\left[e^{-\int_{t}^{T}r(s)ds}\right]
+\]
+This suggests that if we know the prices of all bonds, we can reconstruct the curve. The quality of the curve, or how well it fits observed real world data, however, depends greatly on how we model the dynamic of $dr_t$. One-factor model like the classic Hull-White does not offer sufficient complexity to fit the curve to actual data, which tends to steepen towards the higher end of the maturity spectrum, but only allow affine transformation to the yield curve. This motivates the introduction to include non-linearity in short rate model to be able to bend the curve more flexibly.
 
-
+\subsection{The description of Two-Factor Hull-White model
+}
+One of the way to make the model more flexible is adding a stochastic component $u(t)$ to the $dt$ term of the one-factor Hull-White model, written in full:
+\begin{align*}
+& dr_t = (\theta(t) + u(t) - \alpha r_t)dt + \sigma_{1}(t)dW_{t}^{1} \text{, where} \\
+& u(t) = -\beta u(t)dt + \sigma_{2}(t)dW_{t}^{2}
+\end{align*}
+such that $dW_{t}^{1}$ and $dW_{t}^{2}$ are two Brownian motions with covariation process $dW_{t}^{1}dW_{t}^{2} = \rho dt$
 \section{Comparison with Single Factor Short Rate Models
 }
 
