@@ -67,7 +67,57 @@ One of the way to make the model more flexible is adding a stochastic component 
 & dr_t = (\theta(t) + u(t) - \alpha r_t)dt + \sigma_{1}(t)dW_{t}^{1} \text{, where} \\
 & u(t) = -\beta u(t)dt + \sigma_{2}(t)dW_{t}^{2}
 \end{align*}
-such that $dW_{t}^{1}$ and $dW_{t}^{2}$ are two Brownian motions with covariation process $dW_{t}^{1}dW_{t}^{2} = \rho dt$
+such that $dW_{t}^{1}$ and $dW_{t}^{2}$ are two Brownian motions with covariation process $dW_{t}^{1}dW_{t}^{2} = \rho dt$. \\
+\\
+When the short rate is assumed to evolve in the risk-adjusted measure $\mathbb{P}^{\star}$, we can rewrite the equations as:
+\begin{align*}
+& dr_t = (\theta(t) + u(t) - \alpha r_t)dt + \sigma_{1}dZ_{t}^{1}  \\
+& u(t) = -\beta u(t)dt + \sigma_{2}dZ_{t}^{2}
+\end{align*}
+where $dZ_{t}^{1}$ and $dZ_{t}^{2}$ are two $\mathbb{P}^{\star}$-Brownian motions and satisfy $dZ_{t}^{1}dZ_{t}^{2} = \bar{\rho} dt$.
+$r_{0}, \alpha, \beta, \sigma_{1}, \sigma_{2}$ are positive constants, and $-1 \le \bar{\rho} \le 1$. We define:
+\[
+\chi (t) = r(t) + \delta u(t)
+\]
+where $\delta = \frac{1}{\beta - \alpha}$. The differential form of $\chi (t)$ is as follow:
+\begin{align*}
+d\chi(t) &= (\theta(t) + u(t) - \alpha r(t))dt + \sigma_{1}dZ_{t}^{1}(t) + \delta (-\beta u(t)dt + \sigma_{2}dZ_{t}^{2}) \\
+&= (\theta(t) + u(t) - \alpha r(t) - \delta \beta u(t))dt + \sigma_{1}dZ_{t}^{1}(t) + \delta \sigma_{2}dZ_{t}^{2} \\
+&= \left(\theta(t) - \alpha r(t) + \left(1 - \frac{\beta}{\beta - \alpha} \right)u(t) \right)dt + \sigma_{3}dZ_{t}^{3} \\
+&= (\theta(t) - \alpha \chi(t) )dt + \sigma_{3}dZ_{t}^{3}
+\end{align*}
+with:
+\begin{align*}
+\sigma_{3}dZ_{t}^{3} &= \sigma_{1}dZ_{t}^{1} + \delta\sigma_{2}dZ_{t}^{2} \\
+(\sigma_{3}dZ_{t}^{3})^{2} &= (\sigma_{1}dZ_{t}^{1} + \delta\sigma_{2}dZ_{t}^{2})^{2} \\
+\sigma_{3}^{2}dt &= \sigma_{1}^{2}dt + \delta^{2}\sigma_{2}^{2}dt + 2\delta\sigma_{1}\sigma_{2}dZ_{t}^{1}dZ_{t}^{2} \\
+\sigma_{3}^{2}dt  &=  \sigma_{1}^{2}dt + \delta^{2}\sigma_{2}^{2}dt + 2\delta\sigma_{1}\sigma_{2}\bar{\rho} dt \\
+\sigma_{3}^{2}  &= \sigma_{1}^{2} + \delta^{2}\sigma_{2}^{2} + 2\delta\sigma_{1}\sigma_{2}\bar{\rho} \\
+\sigma_{3}  &= \sqrt{\sigma_{1}^{2} + \delta^{2}\sigma_{2}^{2} + 2\delta\sigma_{1}\sigma_{2}\bar{\rho}} \\
+\end{align*}
+and 
+\[
+dZ_{t}^{3} = \frac{\sigma_{1}dZ_{t}^{1} + \delta\sigma_{2}dZ_{t}^{2}}{\sigma_{3}} 
+\] \\
+\\
+Next we define another stochastic process $\psi(t) = -\delta u(t) = \frac{u(t)}{\alpha - \beta}$,
+which has the differential form of:
+\begin{align*}
+d\psi(t) &= -\frac{\beta}{\alpha - \beta}u(t)dt + \frac{\sigma_{2}}{\alpha - \beta}dZ_{t}^{2} \\
+&= -\beta\psi(t)dt + \sigma_{4}dZ_{t}^{2}
+\end{align*}
+where $\sigma_{4} = \frac{\sigma_{2}}{\alpha - \beta}$. Now, we can express $r(t)$ as sum of three independent processes.
+\[
+r(t) = \tilde{\chi}(t) + \psi(t) + \phi(t)  
+\]
+where
+\begin{align*}
+&d\tilde{\chi}(t) = -\alpha\tilde{\chi}(t)dt + \sigma_{3}dZ_{t}^{3} \\
+&d\psi(t) = -\beta\psi(t)dt + \sigma_{4}dZ_{t}^{2} \\
+&\phi(t) = r_{0}e^{-\alpha t} + \int_{0}^{t}{\theta(s)e^{-\alpha(t-s)}ds} \\
+\end{align*}
+In this form, we can see that the Two-Factor Hull-White model is equivalent to a Two-Addictive-Factor Gaussian model.
+However, this is beyond the scope of this paper, see \cite{BA1}.
 \section{Comparison with Single Factor Short Rate Models
 }
 
