@@ -47,14 +47,14 @@ Short rate models are divided in two categories.  The first one is equilibrium m
 
 The short rate models are either single factor or multi factor, for this paper we will only focus on One-factor short rate models and a two factor short rate model \cite{BA1}.  One factor  models involve a single stochastic factor which is the short rate to determine the future movements of all interest rates.  \\
 
-TODO: Write intro of a two factor model.
+Single-factor model can accommodate rich patterns however they imply that all rates move in the same direction in any short time interval \cite{cheng2006hull}.
 
 
 \section{Two-Factor Hull-White Model 
 }
 \subsection{The motivation for two-factor models
 }
-The short rate $r_t$ with its stochastic behavior characterizes the yield curve, which tells the interest rate of bonds in relation to maturity, written as:
+The short rate $r_t$ with its stochastic behaviour characterizes the yield curve, which tells the interest rate of bonds in relation to maturity, written as:
 \[
 P(t,T) = \mathbb{E}\left[e^{-\int_{t}^{T}r(s)ds}\right]
 \]
@@ -159,7 +159,7 @@ The model exhibits mean reversion, over time interest rate converge to the mean 
 
 \subsection{Comparison with Ho-Lee model
 }
-Ho-Lee model developed in 1986 \cite{HoLee1} by Thomas SY Ho and Sang-Bin Lee, it is a single factor short rate model used in pricing of interest rate derivatives.  It was the first model arbitrage free computational lattices for evolution of short interest rates.  Ho-Lee assumed interest rates have a normal distribution.
+Ho-Lee model developed in 1986 \cite{HoLee1} by Thomas SY Ho and Sang-Bin Lee, it is a single factor short rate model used in pricing of interest rate derivatives.  It was the first model arbitrage free computational lattices for evolution of short interest rates.  Ho-Lee assumed interest rates have a normal distribution. \\
 
 The Ho-Lee  model describes short interest rates as follows,
  \[
@@ -170,7 +170,7 @@ $\theta_t =$ Drift  \\
 $\sigma$ = Short rate volatility \\
 $W_t$ = Brownian motion process  \\
 
-This model permits both the drift to be function of time and it produces an instantaneous short interest rate that has a normal distribution it exhibits no mean reversion.  In comparison to the two factor Hull-White model it exhibits several short comings such as there is no term structure volatility, there is only one factor which assumes short rates correlated.
+This model permits both the drift to be function of time and it produces an instantaneous short interest rate that has a normal distribution it exhibits no mean reversion.  The Ho-Lee model is tractable because it is Markov and provides and exact fit in the current term structure, however it gives very little flexibility in choosing the volatility structure.  Since it has no mean reversion no matter how high or low the interest rates are the average direction of interest rates movement over the next short period of time is same.
 
 \subsection{Comparison with Hull-White model
 }
@@ -186,7 +186,7 @@ $\alpha_t =$ Time dependent Speed of mean reversion $0 \leq \alpha \leq 1 $ \\
 $\sigma_t$ = Time dependent Short rate volatility \\
 $W_t$ = Brownian motion process  \\
 
-The Hull-White model also assumes that short rates have a normal distribution it exhibits mean reversion.  In comparison to the two factor Hull-White model it exhibits several short comings such as there is no term structure volatility, there is only one factor which assumes short rates correlated.
+The Hull-White model also assumes that short rates have a normal distribution it exhibits mean reversion.  This model provides same amount of traceability as the Ho-Lee model.  The model can represent a wider range of volatility structures compared to the Ho-Lee model.
 \section{Derivative product Payoff}
 
 
@@ -214,8 +214,9 @@ In this paper we went through ....................  The purpose of this paper ..
 \bibitem{HW5} Hull, John. "Using Hull-White interest rate trees." Journal of derivatives 3.3 (1996): 26-36.
 \bibitem{BN1} Burgess, Nicholas, An Overview of the Vasicek Short Rate Model (August 12, 2014). Available at SSRN: https://ssrn.com/abstract=2479671 or http://dx.doi.org/10.2139/ssrn.2479671
 \bibitem{HJM1} Heath, David, Robert Jarrow, and Andrew Morton. "Bond pricing and the term structure of interest rates: A new methodology for contingent claims valuation." Econometrica: Journal of the Econometric Society (1992): 77-105.
-
-
+\bibitem{cheng2006hull} Cheng, Chia-Jen "On Hull-White Models: One and Two Factors (2006).
+\bibitem{Jam1} Jamshidian, Farshid. "An exact bond option formula." The journal of Finance 44.1 (1989): 205-209.
+\bibitem{MT1}  Turnbull, Stuart M., and Frank Milne. "A simple approach to interest-rate option pricing." The Review of Financial Studies 4.1 (1991): 87-120.
 
 \end{thebibliography}
 \bibliographystyle{plain}
