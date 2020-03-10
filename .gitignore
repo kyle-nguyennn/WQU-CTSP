@@ -7,3 +7,5 @@
 *.docx
 *.fls
 *.fdb_latexmk
+*.out
+*.ipynb_checkpoints*

@@ -360,189 +360,20 @@
     % Slightly bigger margins than the latex defaults
     
     \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
 \begin{document}
+    
+    \maketitle
+    
+    
 
-\nocite{*} % this command forces all references in template.bib to be printed in the bibliography
+    
+    \hypertarget{two-factor-hull-white-model-calibration}{%
+\section{Two Factor Hull White Model
+Calibration}\label{two-factor-hull-white-model-calibration}}
 
-\title{Short Rate Models}
-
-\author{
-  Ansari, Zain Us Sami Ahmed\\
-  \texttt{zainussami@gmail.com}
-  \and
-  Nguyen, Dang Duy Nghia \\
-  \texttt{nghia002@e.ntu.edu.sg}
-   \and
-  Gunawan, Handy \\
-  \texttt{handygunawan17@gmail.com}  
-  }
-
-\date{March. 5, 2020} % if this is omitted, the current date is used for the title page
-
-\maketitle
-
-\noindent
-\textbf{Keywords:} Short rate models, Interest Rates Derivatives,  Ho-Lee Model, Vasicek Model, Cox-Ingersoll-Ross (CIR) model, Single factor and two factor Hull-White model.
-
-
-
-% the following creates an abstract -- it can be omitted
-% an example of an environment: these have the form \begin{name} ... \end{name}
-\begin{abstract}
-In this paper we discuss short rate models with a focus on two factor Hull-White model.  In the first section we discuss models for short rate, in the second section we describe the two factor Hull-White model in mathematical terms, in the third section we compare this model to Ho-Lee Model, Vasicek Model, Cox-Ingersoll-Ross (CIR) model, Single factor Hull-White model,  in the fourth section we present a derivative product payoff using the two factor Hull-White model. and we conclude by discussing the purpose of this paper.  
-\end{abstract}
-
-\section{Introduction
-}
-There are several frameworks to model interest rates, for this paper we will focus on models for short rate.  These models are useful for the valuation of options for which we need an estimate of how much interest rates can change in future.  The short rate $r_t$ is considered to be continually compounded interest rate, where one can borrow or lend money at an infinitesimally short period of time $t$. \\
-
-Short rate models are rooted in the Vasicek model \cite{BN1} which is considered endogenous with time homogeneous parameters (constant over time).  The models extending on the work of Vasicek model have time dependent parameters such as the Hull-White model \cite{HW1}. \\
-
-Short rate models are divided in two categories.  The first one is equilibrium models, Vasicek model and Cox, Ingersoll and Ross (CIR) model are examples of equilibrium short rate models.  The second one is the arbitrage free models, the Ho-Lee model and the Hull-White model are example of arbitrage free models.  We discuss all these models in Section 3. \\ 
-
-The short rate models are either single factor or multi factor, for this paper we will only focus on One-factor short rate models and a two factor short rate model \cite{BA1}.  One factor  models involve a single stochastic factor which is the short rate to determine the future movements of all interest rates.  \\
-
-TODO: Write intro of a two factor model.
-
-
-\section{Two-Factor Hull-White Model 
-}
-\subsection{The motivation for two-factor models
-}
-The short rate $r_t$ with its stochastic behavior characterizes the yield curve, which tells the interest rate of bonds in relation to maturity, written as:
-\[
-P(t,T) = \mathbb{E}\left[e^{-\int_{t}^{T}r(s)ds}\right]
-\]
-This suggests that if we know the prices of all bonds, we can reconstruct the curve. The quality of the curve, or how well it fits observed real world data, however, depends greatly on how we model the dynamic of $dr_t$. One-factor model like the classic Hull-White does not offer sufficient complexity to fit the curve to actual data, which tends to steepen towards the higher end of the maturity spectrum, but only allow affine transformation to the yield curve. This motivates the introduction to include non-linearity in short rate model to be able to bend the curve more flexibly.
-
-\subsection{The description of Two-Factor Hull-White model
-}
-One of the way to make the model more flexible is adding a stochastic component $u(t)$ to the $dt$ term of the one-factor Hull-White model, written in full:
-\begin{align*}
-& dr_t = (\theta(t) + u(t) - \alpha r_t)dt + \sigma_{1}(t)dW_{t}^{1} \text{, where} \\
-& u(t) = -\beta u(t)dt + \sigma_{2}(t)dW_{t}^{2}
-\end{align*}
-such that $dW_{t}^{1}$ and $dW_{t}^{2}$ are two Brownian motions with covariation process $dW_{t}^{1}dW_{t}^{2} = \rho dt$. \\
-\\
-When the short rate is assumed to evolve in the risk-adjusted measure $\mathbb{P}^{\star}$, we can rewrite the equations as:
-\begin{align*}
-& dr_t = (\theta(t) + u(t) - \alpha r_t)dt + \sigma_{1}dZ_{t}^{1}  \\
-& u(t) = -\beta u(t)dt + \sigma_{2}dZ_{t}^{2}
-\end{align*}
-where $dZ_{t}^{1}$ and $dZ_{t}^{2}$ are two $\mathbb{P}^{\star}$-Brownian motions and satisfy $dZ_{t}^{1}dZ_{t}^{2} = \bar{\rho} dt$.
-$r_{0}, \alpha, \beta, \sigma_{1}, \sigma_{2}$ are positive constants, and $-1 \le \bar{\rho} \le 1$. We define:
-\[
-\chi (t) = r(t) + \delta u(t)
-\]
-where $\delta = \frac{1}{\beta - \alpha}$. The differential form of $\chi (t)$ is as follow:
-\begin{align*}
-d\chi(t) &= (\theta(t) + u(t) - \alpha r(t))dt + \sigma_{1}dZ_{t}^{1}(t) + \delta (-\beta u(t)dt + \sigma_{2}dZ_{t}^{2}) \\
-&= (\theta(t) + u(t) - \alpha r(t) - \delta \beta u(t))dt + \sigma_{1}dZ_{t}^{1}(t) + \delta \sigma_{2}dZ_{t}^{2} \\
-&= \left(\theta(t) - \alpha r(t) + \left(1 - \frac{\beta}{\beta - \alpha} \right)u(t) \right)dt + \sigma_{3}dZ_{t}^{3} \\
-&= (\theta(t) - \alpha \chi(t) )dt + \sigma_{3}dZ_{t}^{3}
-\end{align*}
-with:
-\begin{align*}
-\sigma_{3}dZ_{t}^{3} &= \sigma_{1}dZ_{t}^{1} + \delta\sigma_{2}dZ_{t}^{2} \\
-(\sigma_{3}dZ_{t}^{3})^{2} &= (\sigma_{1}dZ_{t}^{1} + \delta\sigma_{2}dZ_{t}^{2})^{2} \\
-\sigma_{3}^{2}dt &= \sigma_{1}^{2}dt + \delta^{2}\sigma_{2}^{2}dt + 2\delta\sigma_{1}\sigma_{2}dZ_{t}^{1}dZ_{t}^{2} \\
-\sigma_{3}^{2}dt  &=  \sigma_{1}^{2}dt + \delta^{2}\sigma_{2}^{2}dt + 2\delta\sigma_{1}\sigma_{2}\bar{\rho} dt \\
-\sigma_{3}^{2}  &= \sigma_{1}^{2} + \delta^{2}\sigma_{2}^{2} + 2\delta\sigma_{1}\sigma_{2}\bar{\rho} \\
-\sigma_{3}  &= \sqrt{\sigma_{1}^{2} + \delta^{2}\sigma_{2}^{2} + 2\delta\sigma_{1}\sigma_{2}\bar{\rho}} \\
-\end{align*}
-and 
-\[
-dZ_{t}^{3} = \frac{\sigma_{1}dZ_{t}^{1} + \delta\sigma_{2}dZ_{t}^{2}}{\sigma_{3}} 
-\] \\
-\\
-Next we define another stochastic process $\psi(t) = -\delta u(t) = \frac{u(t)}{\alpha - \beta}$,
-which has the differential form of:
-\begin{align*}
-d\psi(t) &= -\frac{\beta}{\alpha - \beta}u(t)dt + \frac{\sigma_{2}}{\alpha - \beta}dZ_{t}^{2} \\
-&= -\beta\psi(t)dt + \sigma_{4}dZ_{t}^{2}
-\end{align*}
-where $\sigma_{4} = \frac{\sigma_{2}}{\alpha - \beta}$. Now, we can express $r(t)$ as sum of three independent processes.
-\[
-r(t) = \tilde{\chi}(t) + \psi(t) + \phi(t)  
-\]
-where
-\begin{align*}
-&d\tilde{\chi}(t) = -\alpha\tilde{\chi}(t)dt + \sigma_{3}dZ_{t}^{3} \\
-&d\psi(t) = -\beta\psi(t)dt + \sigma_{4}dZ_{t}^{2} \\
-&\phi(t) = r_{0}e^{-\alpha t} + \int_{0}^{t}{\theta(s)e^{-\alpha(t-s)}ds} \\
-\end{align*}
-In this form, we can see that the Two-Factor Hull-White model is equivalent to a Two-Addictive-Factor Gaussian model.
-However, this is beyond the scope of this paper, see \cite{BA1}.
-\section{Comparison with Single Factor Short Rate Models
-}
-
-\subsection{Comparison with Vasicek model
-}
-The Vasicek Model \cite{Vas1} model is one of the earliest stochastic models of the term structure of interest rate.\\
-
-The Vasicek model describes short interest rates as follows,
- \[
-dr_t = \alpha(\beta - r_t) dt + \sigma dW_t
-\]
-Where,\\
-$\alpha =$ Speed of mean reversion $0 \leq \alpha \leq 1 $ \\
-$\beta =$ Mean reversion level  \\
-$r_t$ = Short rate  \\
-$\sigma$ = Short rate volatility \\
-$W_t$ = Brownian motion process  \\
-
-The model exhibits mean reversion, over time interest rate converge to the mean reversion level $\beta$ at the speed of $\alpha$.  In comparison to the two factor Hull-White model it exhibits several short comings such as there is no term structure volatility, there is only one factor which assumes short rates correlated, it is an endogenous model containing time homogeneous parameters which do not vary over time.
-
-
-\subsection{Comparison with Cox-Ingersoll-Ross (CIR) model
-}
-
-The Cox-Ingersoll-Ross (CIR) model was developed in 1985 \cite{CIR1} by J. C. Cox, J. E. Ingersoll and S. A. Ross.  This model is considered an improvement to the Vasicek model and the square root element does not allow for negative rates.\\
-
-The Cox-Ingersoll-Ross (CIR) model describes short interest rates as follows,
- \[
-dr_t = \alpha(\beta - r_t) dt + \sigma \sqrt{r_t} dW_t
-\]
-Where,\\
-$\alpha =$ Speed of mean reversion $0 \leq \alpha \leq 1 $ \\
-$\beta =$ Mean reversion level  \\
-$r_t$ = Short rate  \\
-$\sigma$ = Short rate volatility \\
-$W_t$ = Brownian motion process  \\
-
-The model exhibits mean reversion, over time interest rate converge to the mean reversion level $\beta$ at the speed of $\alpha$.  In comparison to the two factor Hull-White model it exhibits several short comings such as there is no term structure volatility, there is only one factor which assumes short rates correlated, it is an endogenous model containing time homogeneous parameters which do not vary over time.
-
-\subsection{Comparison with Ho-Lee model
-}
-Ho-Lee model developed in 1986 \cite{HoLee1} by Thomas SY Ho and Sang-Bin Lee, it is a single factor short rate model used in pricing of interest rate derivatives.  It was the first model arbitrage free computational lattices for evolution of short interest rates.  Ho-Lee assumed interest rates have a normal distribution.
-
-The Ho-Lee  model describes short interest rates as follows,
- \[
-dr_t = \theta_t dt + \sigma  dW_t
-\]
-Where,\\
-$\theta_t =$ Drift  \\
-$\sigma$ = Short rate volatility \\
-$W_t$ = Brownian motion process  \\
-
-This model permits both the drift to be function of time and it produces an instantaneous short interest rate that has a normal distribution it exhibits no mean reversion.  In comparison to the two factor Hull-White model it exhibits several short comings such as there is no term structure volatility, there is only one factor which assumes short rates correlated.
-
-\subsection{Comparison with Hull-White model
-}
-Hull-White model developed in 1990 \cite{HW1} by John C. Hull and Alan D. White, it is a single factor short rate model used in pricing of interest rate derivatives.  It is also known as the Extended Vasicek Model.\\
-
-The Hull-White model in essence is the same as the Vasicek model with time dependent parameters and describes short interest rates as follows,
- \[
-dr_t = (\theta_t - \alpha_t r_t) dt + \sigma_t  dW_t
-\]
-Where,\\
-$\theta_t =$ Drift  \\
-$\alpha_t =$ Time dependent Speed of mean reversion $0 \leq \alpha \leq 1 $ \\
-$\sigma_t$ = Time dependent Short rate volatility \\
-$W_t$ = Brownian motion process  \\
-
-The Hull-White model also assumes that short rates have a normal distribution it exhibits mean reversion.  In comparison to the two factor Hull-White model it exhibits several short comings such as there is no term structure volatility, there is only one factor which assumes short rates correlated.
-\section{Derivative product Payoff}
 In this section, we will provide a numerical example of calibration of
 2-factor Hull-White model. We will fit the model to historical data of
 swaptions volatility and obtain the five parameters
@@ -746,35 +577,9 @@ alpha = 0.04810, beta = 0.03892, sigma\_1 = 0.00570, sigma\_2 = 0.00004, rho\_ba
 Cumulative Error :         0.12288
     \end{Verbatim}
 
-\section{Conclusion}
 
-In this paper we went through ....................  The purpose of this paper ..............................
-
-\newpage
-\section*{} \label{bibsection}
-
-
-% the second parameter MMMMM should be as long as the longest label you use, in my case Smoller -- if you use % numbers only, use 99
-% use \cite{refname} to refer to bibliography item \bibitem{refname} 
-% LaTeX assigns a number, unless you use \bibitem[Name]{refname} -- in this case
-% LaTeX prints Name when you use \cite{refname}
-\begin{thebibliography}{MMMMM} 
-\bibitem{BA1} Blanchard, Arnaud. "The two-factor Hull-White model: pricing and calibration of interest rates derivatives." KTH Royal Insitute of Technology (2014).
-\bibitem{HoLee1} Ho, Thomas SY, and Sang‐Bin Lee. "Term structure movements and pricing interest rate contingent claims." the Journal of Finance 41.5 (1986): 1011-1029.
-\bibitem{Vas1} Vasicek, Oldrich. "An equilibrium characterization of the term structure." Journal of financial economics 5.2 (1977): 177-188.
-\bibitem{CIR1} Cox, John C., Jonathan E. Ingersoll Jr, and Stephen A. Ross. "An intertemporal general equilibrium model of asset prices." Econometrica: Journal of the Econometric Society (1985): 363-384.
-\bibitem{HW1} Hull, John, and Alan White. "Pricing interest-rate-derivative securities." The review of financial studies 3.4 (1990): 573-592.
-\bibitem{HW2} Hull, John, and Alan White. "One-Factor Interest Rate Models and the Valuation of Interest Rate Derivative Securities" Journal of Finance and Quantitative Analysis, volume 28,  (1993): 235 - 254.
-\bibitem{HW3} Hull, John, and Alan White. "Numerical procedures for implementing term structure models I: Single-factor models." Journal of derivatives 2.1 (1994): 7-16.
-\bibitem{HW4} Hull, John, and Alan White. "The general Hull–White model and supercalibration." Financial Analysts Journal 57.6 (2001): 34-43.
-\bibitem{HW5} Hull, John. "Using Hull-White interest rate trees." Journal of derivatives 3.3 (1996): 26-36.
-\bibitem{BN1} Burgess, Nicholas, An Overview of the Vasicek Short Rate Model (August 12, 2014). Available at SSRN: https://ssrn.com/abstract=2479671 or http://dx.doi.org/10.2139/ssrn.2479671
-\bibitem{HJM1} Heath, David, Robert Jarrow, and Andrew Morton. "Bond pricing and the term structure of interest rates: A new methodology for contingent claims valuation." Econometrica: Journal of the Econometric Society (1992): 77-105.
-
-
-
-\end{thebibliography}
-\bibliographystyle{plain}
-\bibliography{template}
-
+    % Add a bibliography block to the postdoc
+    
+    
+    
 \end{document}
